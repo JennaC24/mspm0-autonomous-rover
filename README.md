@@ -4,17 +4,17 @@ Autonomous maze-navigating robot built on the TI MSPM0G3507, with closed-loop PI
 (Insert image of car here)
 
 ## Table of Contents
-[The problem](##The-Problem)\
-[What I built](##What-I-Built)\
-[Control Modes](##Control-Modes)\
-[System Design](##System-Design)\
-[Hardware & Tools Used](##Hardware-&-Tools-Used)\
-[How To Build & Run](##How-To-Build-&-Run)\
-[Project Structure](##Project-Structure)\
-[Results](##Results)\
-[Challenges & What I Learned](##Challenges-&-What-I-Learned)\
-[References](##References)\
-[About Me](##About-Me)
+[The Problem](#The-Problem)\
+[What I Built](#What-I-Built)\
+[Control Modes](#Control-Modes)\
+[System Design](#System-Design)\
+[Hardware & Tools Used](#Hardware-&-Tools-Used)\
+[How To Build & Run](#How-To-Build-&-Run)\
+[Project Structure](#Project-Structure)\
+[Results](#Results)\
+[Challenges & What I Learned](#Challenges-&-What-I-Learned)\
+[References](#References)\
+[About Me](#About-Me)
 
 ## The Problem
 Navigating an unknown maze environment without a pre-programmed route requires a robot to make real-time decisions using only onboard sensors — detecting obstacles, deciding which way to turn, and recognizing when it's stuck, all without any map or human input.
