@@ -31,7 +31,7 @@ A robotic car with two operating modes: a manually-driven mode where a hand-held
 ## System Design
 [Insert I2C Schematic here] The CMPS12 compass and SRF08 ultrasonic ranger share a single I2C bus, with pull-up resistors on SDA/SCL. Six mechanical bumper switches provide a redundant, contact-based backup to ultrasonic obstacle detection. [Insert block diagram: Sensors → MSPM0G3507 → State Machine → PWM → Motors]
 
-## Hardware  & Tools Used
+## Hardware & Tools Used
 - TI LP-MSPM0G3507 LaunchPad
 - RPI-RSLK robotic car platform
 - CMPS12 electronic compass (I2C)
@@ -52,7 +52,7 @@ Language: C. Toolchain: Code Composer Studio
   <img src="Images/autonomous-hardware.jpeg" alt="Autonomous Hardware" width="500">
 </p>
 
-## How to Build & Run
+## How To Build & Run
 
 ## Project Structure
 
