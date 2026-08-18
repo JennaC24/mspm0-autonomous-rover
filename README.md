@@ -8,11 +8,11 @@ Autonomous maze-navigating robot built on the TI MSPM0G3507, with closed-loop PI
 [What I Built](#What-I-Built)\
 [Control Modes](#Control-Modes)\
 [System Design](#System-Design)\
-[Hardware & Tools Used](#Hardware-&-Tools-Used)\
-[How To Build & Run](#How-To-Build-&-Run)\
+[Hardware & Tools Used](#Hardware-and-Tools-Used)\
+[How To Build & Run](#How-To-Build-and-Run)\
 [Project Structure](#Project-Structure)\
 [Results](#Results)\
-[Challenges & What I Learned](#Challenges-&-What-I-Learned)\
+[Challenges & What I Learned](#Challenges-and-What-I-Learned)\
 [References](#References)\
 [About Me](#About-Me)
 
@@ -31,7 +31,7 @@ A robotic car with two operating modes: a manually-driven mode where a hand-held
 ## System Design
 [Insert I2C Schematic here] The CMPS12 compass and SRF08 ultrasonic ranger share a single I2C bus, with pull-up resistors on SDA/SCL. Six mechanical bumper switches provide a redundant, contact-based backup to ultrasonic obstacle detection. [Insert block diagram: Sensors → MSPM0G3507 → State Machine → PWM → Motors]
 
-## Hardware & Tools Used
+## Hardware and Tools Used
 - TI LP-MSPM0G3507 LaunchPad
 - RPI-RSLK robotic car platform
 - CMPS12 electronic compass (I2C)
@@ -52,13 +52,13 @@ Language: C. Toolchain: Code Composer Studio
   <img src="Images/autonomous-hardware.jpeg" alt="Autonomous Hardware" width="500">
 </p>
 
-## How To Build & Run
+## How To Build and Run
 
 ## Project Structure
 
 ## Results
 
-## Challenges & What I Learned
+## Challenges and What I Learned
 Talk about challenge regarding the car overturning during autonomous navigation and have to add a stop between each turn to prevent it. 
 
 ## References
