@@ -20,7 +20,7 @@ Autonomous maze-navigating robot built on the TI MSPM0G3507, with closed-loop PI
 [About Me](#About-Me)
 
 ## The Problem
-In order to navigate a block maze environment without a pre-programmed route, an RPI-RSLK car is required to make real time decisions through the use of a combination of an ultrasonic ranger, an electronic compass, and a TI LP-MSPM0G3507 LaunchPad. The car must detect obstacles, decide which way to turn, and recognize when it's stuck, all without any map or human input.
+In order to navigate a block maze environment without a pre-programmed route, an RPI-RSLK car is required to make real time decisions through the use of a combination of an ultrasonic ranger, an electronic compass, and a TI LP-MSPM0G3507 LaunchPad Development Board. The car must detect obstacles, decide which way to turn, and recognize when it's stuck, all without any map or human input.
 
 ## What I Built
 A robotic car with two operating modes: a manually-driven mode where a hand-held sensor board controls speed and steering through gesture (tilt), and a fully autonomous mode where the car navigates unknown maze environments on its own using ultrasonic sensing, physical bumpers, and a zig-zag wall-following strategy with stuck-corner detection.
@@ -38,7 +38,7 @@ A robotic car with two operating modes: a manually-driven mode where a hand-held
 The CMPS12 compass and SRF08 ultrasonic ranger share a single I2C bus, with pull-up resistors on SDA/SCL. Six mechanical bumper switches provide a redundant, contact-based backup to ultrasonic obstacle detection. [Insert block diagram: Sensors → MSPM0G3507 → State Machine → PWM → Motors]
 
 ## Hardware and Tools Used
-- TI LP-MSPM0G3507 LaunchPad
+- TI LP-MSPM0G3507 LaunchPad Development Board
 - RPI-RSLK robotic car platform
 - CMPS12 electronic compass (I2C)
 - SRF08 ultrasonic ranger (I2C)
@@ -77,10 +77,10 @@ Download and run the CCS installer. On the "Select Components" page, check only 
 
 ### 3. Import and flash the project
 1. Connect the LP-MSPM0G3507 LaunchPad via USB.
-2. In CCS, go to **Project → Import CCS Projects** and select this repo's project folder.
+2. In CCS, go to **Project → Import CCS Projects**, and select either `autonomous_navigation/` or `gesture_control/` depending on which mode you want to run.
 3. Build the project (hammer icon) to compile.
 4. Flash to the board (bug icon) to load and run.
-5. Open a serial terminal (e.g. CCS's built-in console, or PuTTY/TeraTerm) at the baud rate set in the code to view live debug output — this is how you'll see compass bearing, state transitions, and sensor readings while the car runs.
+5. Open a serial terminal (CCS's built-in console, or PuTTY/TeraTerm) to view live debug output — compass bearing, sensor readings, and state transitions print here while the car runs.
 
 ### 4. Switching between modes
 - **Gesture / manual control:** flash `[gesture_control.c filename]`, use the physical slide switch on the RSLK to toggle between Roll and Angle steering.
@@ -88,6 +88,49 @@ Download and run the CCS installer. On the "Select Components" page, check only 
 
 ## Project Structure
 
+Both `autonomous_navigation/` and `gesture_control/` are self-contained CCS projects built from a shared course-provided template (the `engr2350_*` files), which wraps the MSPM0 SDK's low-level drivers into simpler functions for GPIO, I2C, timers, and analog I/O.
+
+```
+├── autonomous_navigation/
+│   ├── .ccsproject
+│   ├── .cproject
+│   ├── .project
+│   ├── main.c                        # Zig-zag wall-following state machine
+│   ├── .settings/                    # CCS/Eclipse editor preferences
+│   ├── inc/
+│   │   ├── engr2350_analog.h
+│   │   ├── engr2350_gpio.h
+│   │   ├── engr2350_i2c.h
+│   │   ├── engr2350_mspm0.h
+│   │   ├── engr2350_pfmap.h
+│   │   ├── engr2350_timers.h
+│   │   └── ti_msp_dl_config.h
+│   ├── src/
+│   │   ├── engr2350_analog.c
+│   │   ├── engr2350_gpio.c
+│   │   ├── engr2350_i2c.c
+│   │   ├── engr2350_mspm0.c
+│   │   ├── engr2350_timers.c
+│   │   ├── mspm0g3507.cmd
+│   │   ├── startup_mspm0g350x_ticlang.c
+│   │   └── ti_msp_dl_config.c
+│   └── targetConfigs/
+│       ├── MSPM0G3507.ccxml
+│       └── readme.txt
+│
+├── gesture_control/
+│   ├── .ccsproject
+│   ├── .cproject
+│   ├── .project
+│   ├── main.c                        # Pitch/roll manual driving + angle-based heading control
+│   ├── .settings/
+│   ├── inc/                          # (same structure as above)
+│   ├── src/                          # (same structure as above)
+│   └── targetConfigs/
+│
+├── Images/                           # Diagrams and hardware photos used in this README
+└── README.md
+```
 ## Results
 
 ## Challenges and What I Learned
