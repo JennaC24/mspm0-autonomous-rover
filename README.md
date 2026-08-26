@@ -2,7 +2,7 @@
 Autonomous maze-navigating robot built on the TI MSPM0G3507, with closed-loop PID motor control and gesture-based driving.
 
 <div align="center">
-  <img src="Images/autonomous-hardware.jpeg" alt="Autonomous Hardware" width="455">
+  <img src="Images/autonomous-hardware.png" alt="Autonomous Hardware" width="456">
   <img src="Images/block-diagram.png" alt="Block Diagram" width="400">
 </div>
 
@@ -56,12 +56,12 @@ Toolchain: Code Composer Studio
 ### Hardware Setup for Gesture Based and Pitch/Roll Based Control
 (not pictured is the handheld breadboard that utilizes a compass to control the car)
 <p align="center">
-  <img src="Images/gesture-based-hardware.jpeg" alt="Gesture Based Hardware" width="500">
+  <img src="Images/gesture-based-hardware.png" alt="Gesture Based Hardware" width="500">
 </p>
 
 ### Hardware Setup for Autonomous Navigation
 <p align="center">
-  <img src="Images/autonomous-hardware.jpeg" alt="Autonomous Hardware" width="500">
+  <img src="Images/autonomous-hardware.png" alt="Autonomous Hardware" width="500">
 </p>
 
 ## How To Build and Run
