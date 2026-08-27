@@ -201,5 +201,5 @@ Early on, the car completed the maze successfully only about **1 in 10 attempts*
 - [SRF08 Ultrasonic Range Finder – Technical Specification](https://www.robot-electronics.co.uk/htm/srf08tech.html)
   
 ## About Me
-**LinkedIn:** [linkedin.com/in/jenna-connelly](https://www.linkedin.com/in/jenna-connelly-42a4a73a4)
+**LinkedIn:** [linkedin.com/in/jenna-connelly](https://www.linkedin.com/in/jenna-connelly-42a4a73a4)\
 **Email:** [jconnel24@gmail.com](mailto:jconnel24@gmail.com)
