@@ -55,7 +55,7 @@ No manual input required. The car drives forward and turns automatically based o
 ### Autonomous Navigation Algorithm
 The car drives forward in a straight line, using the onboard compass to make small heading corrections against drift. While driving, the ultrasonic ranger continuously checks the distance to anything in front of the car:
 
-- If a wall is detected within **18 cm**, the car stops driving forward and turns 90° away from it, alternating left and right each time it encounters a new wall (a zig-zag pattern).
+- If a wall is detected within 18 cm, the car stops driving forward and turns 90° away from it, alternating left and right each time it encounters a new wall (a zig-zag pattern).
 - After completing a turn, the car pauses briefly before resuming forward motion, to let the car fully stop before re-evaluating its surroundings (see Challenges for why this was necessary).
 - If the car needs to turn again very soon after its last turn (meaning it hasn't made real forward progress), it's likely boxed into a corner. In this case, instead of another 90° turn, it performs a full 180° turn to reverse course and escape.
 - The compass verifies each turn has reached its target heading (within 20°); if the compass becomes unreliable, the car falls back to a fixed-duration turn instead.
