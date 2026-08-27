@@ -184,7 +184,7 @@ Both `autonomous_navigation/` and `gesture_control/` are self-contained CCS proj
 ## Results
 This project didn't have a single quantitative benchmark to improve against (no baseline dataset or accuracy target). Success was measured by whether the car could reliably complete the maze without human intervention.
 
-Early on, the car completed the maze successfully only about **1 in 10 attempts**, and only by chance, due to an overturning issue at consecutive walls (see [Challenges](#challenges) for details). After adding a brief pause between turns, the car completed the maze course successfully on every attempt.
+Early on, the car completed the maze successfully only about **1 in 10 attempts**, and only by chance, due to an overturning issue at consecutive walls (see [Challenges](#challenges-and-what-i-learned) for details). After adding a brief pause between turns, the car completed the maze course successfully on every attempt.
 
 ## Challenges and What I Learned
 
