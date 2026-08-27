@@ -7,17 +7,17 @@ Autonomous maze-navigating robot built on the TI MSPM0G3507, with closed-loop PI
 </div>
 
 ## Table of Contents
-[The Problem](#The-Problem)\
-[What I Built](#What-I-Built)\
-[Control Modes](#Control-Modes)\
-[System Design](#System-Design)\
-[Hardware & Tools Used](#Hardware-and-Tools-Used)\
-[How To Build & Run](#How-To-Build-and-Run)\
-[Project Structure](#Project-Structure)\
-[Results](#Results)\
-[Challenges & What I Learned](#Challenges-and-What-I-Learned)\
-[References](#References)\
-[About Me](#About-Me)
+[The Problem](#the-problem)\
+[What I Built](#what-i-built)\
+[Control Modes](#control-modes)\
+[System Design](#system-design)\
+[Hardware & Tools Used](#hardware-and-tools-used)\
+[How To Build & Run](#how-to-build-and-run)\
+[Project Structure](#project-structure)\
+[Results](#results)\
+[Challenges & What I Learned](#challenges-and-what-i-learned)\
+[References](#references)\
+[About Me](#about-me)
 
 ## The Problem
 In order to navigate a block maze environment without a pre-programmed route, an RPI-RSLK car is required to make real time decisions through the use of a combination of an ultrasonic ranger, an electronic compass, and a TI LP-MSPM0G3507 LaunchPad Development Board. The car must detect obstacles, decide which way to turn, and recognize when it's stuck, all without any map or human input.
@@ -39,22 +39,27 @@ Rather than directly setting a turn rate, rolling the board nudges a target head
 A physical slide switch on the RSLK toggles between these two turning modes within `gesture_control/main.c`.
 
 **Autonomous Navigation**
-No manual input required. The car drives forward and turns automatically based on ultrasonic and bumper input — see [System Design](#System-Design) for the full navigation algorithm.
+No manual input required. The car drives forward and turns automatically based on ultrasonic and bumper input. See [System Design](#system-design) for the full navigation algorithm.
 
 ## System Design
 <p align="center">
-  <img src="Images/hardware-diagram.png" alt="Hardware Diagram" width="500">
+  <img src="Images/hardware-diagram.png" alt="I2C Wiring Schematic" width="500">
 </p>
-The CMPS12 compass and SRF08 ultrasonic ranger share a single I2C bus, with pull-up resistors on SDA/SCL. Six mechanical bumper switches provide a redundant, contact-based backup to ultrasonic obstacle detection. [Insert block diagram: Sensors → MSPM0G3507 → State Machine → PWM → Motors]
+<p align="center"><em>I2C wiring: CMPS12 compass and SRF08 ranger share a single bus with pull-up resistors on SDA/SCL.</em></p>
+
+<p align="center">
+  <img src="Images/system-block-diagram.png" alt="System Block Diagram" width="500">
+</p>
+<p align="center"><em>Signal flow: sensor inputs feed the MSPM0G3507, which runs the navigation state machine and drives the motors via PWM.</em></p>
 
 ### Autonomous Navigation Algorithm
 The car drives forward in a straight line, using the onboard compass to make small heading corrections against drift. While driving, the ultrasonic ranger continuously checks the distance to anything in front of the car:
 
 - If a wall is detected within **18 cm**, the car stops driving forward and turns 90° away from it, alternating left and right each time it encounters a new wall (a zig-zag pattern).
 - After completing a turn, the car pauses briefly before resuming forward motion, to let the car fully stop before re-evaluating its surroundings (see Challenges for why this was necessary).
-- If the car needs to turn again very soon after its last turn — meaning it hasn't made real forward progress — it's likely boxed into a corner. In this case, instead of another 90° turn, it performs a full 180° turn to reverse course and escape.
+- If the car needs to turn again very soon after its last turn (meaning it hasn't made real forward progress) it's likely boxed into a corner. In this case, instead of another 90° turn, it performs a full 180° turn to reverse course and escape.
 - The compass verifies each turn has reached its target heading (within 20°); if the compass becomes unreliable, the car falls back to a fixed-duration turn instead.
-- Six mechanical bumper switches serve as a backup obstacle-detection method for cases where the car makes contact with a wall before the ultrasonic sensor can register it — most commonly at sharp corners the sensor doesn't "see" in time.
+- Six mechanical bumper switches serve as a backup obstacle-detection method for cases where the car makes contact with a wall before the ultrasonic sensor can register it, most commonly at sharp corners the sensor doesn't "see" in time.
 
 ## Hardware and Tools Used
 - TI LP-MSPM0G3507 LaunchPad Development Board
@@ -64,7 +69,7 @@ The car drives forward in a straight line, using the onboard compass to make sma
 - 6x mechanical bumper switches
 - Wheel encoders (quadrature)
 
-**Language:** C
+**Language:** C \
 **Toolchain:** Code Composer Studio
 
 ### GPIO Pin Map
@@ -179,9 +184,7 @@ Both `autonomous_navigation/` and `gesture_control/` are self-contained CCS proj
 ## Results
 This project didn't have a single quantitative benchmark to improve against (no baseline dataset or accuracy target). Success was measured by whether the car could reliably complete the maze without human intervention.
 
-**Initial behavior:** When the car encountered two walls in quick succession (e.g. at a tight corner), it would begin its second 90° turn before fully settling from the first, causing an overturn that threw off its heading. This made the car's path unreliable, and it completed the maze successfully only about **1 in 10 attempts**, but only by chance.
-
-**Fix:** Adding a brief pause (`TURN_PAUSE_CYCLES`) between completing a turn and resuming forward motion gave the car time to fully stop and re-center before continuing. After this change, the car completed the maze course successfully on every attempt.
+Early on, the car completed the maze successfully only about **1 in 10 attempts**, and only by chance, due to an overturning issue at consecutive walls (see [Challenges](#challenges) for details). After adding a brief pause between turns, the car completed the maze course successfully on every attempt.
 
 ## Challenges & What I Learned
 
@@ -198,5 +201,5 @@ This project didn't have a single quantitative benchmark to improve against (no 
 - [SRF08 Ultrasonic Range Finder – Technical Specification](https://www.robot-electronics.co.uk/htm/srf08tech.html)
   
 ## About Me
-Linkedin: [linkedin.com/in/jenna-connelly](www.linkedin.com/in/jenna-connelly-42a4a73a4)\
-Personal Email: jconnel24@gmail.com
+**LinkedIn:** [linkedin.com/in/jenna-connelly](https://www.linkedin.com/in/jenna-connelly-42a4a73a4)
+**Email:** [jconnel24@gmail.com](mailto:jconnel24@gmail.com)
