@@ -57,7 +57,7 @@ The car drives forward in a straight line, using the onboard compass to make sma
 
 - If a wall is detected within **18 cm**, the car stops driving forward and turns 90° away from it, alternating left and right each time it encounters a new wall (a zig-zag pattern).
 - After completing a turn, the car pauses briefly before resuming forward motion, to let the car fully stop before re-evaluating its surroundings (see Challenges for why this was necessary).
-- If the car needs to turn again very soon after its last turn (meaning it hasn't made real forward progress) it's likely boxed into a corner. In this case, instead of another 90° turn, it performs a full 180° turn to reverse course and escape.
+- If the car needs to turn again very soon after its last turn (meaning it hasn't made real forward progress), it's likely boxed into a corner. In this case, instead of another 90° turn, it performs a full 180° turn to reverse course and escape.
 - The compass verifies each turn has reached its target heading (within 20°); if the compass becomes unreliable, the car falls back to a fixed-duration turn instead.
 - Six mechanical bumper switches serve as a backup obstacle-detection method for cases where the car makes contact with a wall before the ultrasonic sensor can register it, most commonly at sharp corners the sensor doesn't "see" in time.
 
@@ -186,7 +186,7 @@ This project didn't have a single quantitative benchmark to improve against (no 
 
 Early on, the car completed the maze successfully only about **1 in 10 attempts**, and only by chance, due to an overturning issue at consecutive walls (see [Challenges](#challenges) for details). After adding a brief pause between turns, the car completed the maze course successfully on every attempt.
 
-## Challenges & What I Learned
+## Challenges and What I Learned
 
 **Sensor reliability.** The I2C compass occasionally returned unreliable readings. Rather than trusting it blindly, I added a startup check that verifies the compass values are actually changing, and a fallback to fixed-duration, time-based turns if the compass appears stuck. This way, navigation degrades gracefully instead of failing outright.
 
