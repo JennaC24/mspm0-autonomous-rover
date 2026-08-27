@@ -3,7 +3,7 @@ Autonomous maze-navigating robot built on the TI MSPM0G3507, with closed-loop PI
 
 <div align="center">
   <img src="Images/autonomous-hardware.png" alt="Autonomous Hardware" width="456">
-  <img src="Images/block-diagram.png" alt="Block Diagram" width="400">
+  <img src="Images/maze.png" alt="Block Maze" width="400">
 </div>
 
 ## Table of Contents
