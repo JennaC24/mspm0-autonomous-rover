@@ -2,8 +2,8 @@
 Autonomous maze-navigating robot built on the TI MSPM0G3507, with closed-loop PID motor control and gesture-based driving.
 
 <div align="center">
-  <img src="Images/autonomous-hardware.png" alt="Autonomous Hardware" width="456">
-  <img src="Images/block-maze.png" alt="Block Maze" width="400">
+  <img src="Images/autonomous-hardware.png" alt="Autonomous Hardware" width="400">
+  <img src="Images/block-maze.png" alt="Block Maze" width="350">
 </div>
 
 ## Table of Contents
